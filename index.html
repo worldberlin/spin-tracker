@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Coin Master Spin Tracker</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<title>Coin Master Free Spins &amp; Coins • Daily Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
@@ -20,373 +20,354 @@
                      radial-gradient(ellipse at 80% 80%,rgba(0,229,255,.1) 0%,transparent 50%);
   }
 
-  /* HEADER */
   header{
-    text-align:center;padding:30px 20px 20px;
-    border-bottom:1px solid rgba(187,134,252,.2);
+    background:rgba(26,10,46,.95);backdrop-filter:blur(10px);
+    border-bottom:3px solid var(--gold);
+    padding:20px 0;
+    position:sticky;top:0;z-index:100;
   }
-  header h1{
-    font-family:'Fredoka One',cursive;font-size:2.6rem;
+  .header-inner{
+    max-width:1100px;margin:0 auto;padding:0 20px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-family:'Fredoka One',cursive;font-size:2.4rem;
     background:linear-gradient(90deg,var(--gold),var(--gold2),var(--purple));
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    letter-spacing:1px;
+    display:flex;align-items:center;gap:10px;
   }
-  header p{color:var(--muted);font-size:.95rem;margin-top:6px}
+  nav a{
+    color:var(--txt);margin-left:30px;text-decoration:none;font-weight:700;
+    transition:.2s;
+  }
+  nav a:hover{color:var(--gold)}
 
-  /* MAIN LAYOUT */
-  main{max-width:700px;margin:0 auto;padding:24px 16px 60px}
+  /* HERO */
+  .hero{
+    max-width:1100px;margin:40px auto 60px;
+    padding:0 20px;text-align:center;
+  }
+  .hero h1{
+    font-family:'Fredoka One',cursive;font-size:3.2rem;
+    line-height:1.1;
+    background:linear-gradient(90deg,var(--gold),#fff,var(--purple));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero p{
+    font-size:1.3rem;margin:15px 0 30px;color:var(--muted);max-width:680px;margin-left:auto;margin-right:auto;
+  }
+  .hero .btn-hero{
+    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    color:#1A0A2E;font-size:1.4rem;padding:18px 40px;border-radius:50px;
+    font-weight:800;box-shadow:0 8px 30px rgba(255,215,0,.5);
+    text-decoration:none;display:inline-flex;align-items:center;gap:12px;
+    transition:.3s;
+  }
+  .hero .btn-hero:hover{transform:scale(1.08);box-shadow:0 12px 40px rgba(255,215,0,.6)}
 
-  /* STATS BAR */
-  .stats-bar{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;
-  }
-  .stat-card{
-    background:var(--card);border-radius:16px;padding:16px 12px;text-align:center;
-    border:1px solid rgba(187,134,252,.2);position:relative;overflow:hidden;
-  }
-  .stat-card::before{
-    content:'';position:absolute;top:-30px;right:-30px;width:80px;height:80px;
-    border-radius:50%;opacity:.15;
-  }
-  .stat-card.spins::before{background:var(--spin)}
-  .stat-card.coins::before{background:var(--gold)}
-  .stat-card.raids::before{background:var(--green)}
-  .stat-icon{font-size:1.8rem;margin-bottom:6px}
-  .stat-value{
-    font-family:'Fredoka One',cursive;font-size:1.8rem;
-    line-height:1;margin-bottom:4px;
-  }
-  .stat-card.spins .stat-value{color:var(--spin)}
-  .stat-card.coins .stat-value{color:var(--gold)}
-  .stat-card.raids .stat-value{color:var(--green)}
-  .stat-label{font-size:.75rem;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  /* MAIN CONTAINER */
+  main{max-width:1100px;margin:0 auto;padding:0 20px 80px}
 
-  /* SPIN INPUT SECTION */
+  /* DAILY LINKS SECTION */
   .section{
-    background:var(--card);border-radius:20px;padding:22px;
-    margin-bottom:20px;border:1px solid rgba(187,134,252,.15);
+    background:var(--card);border-radius:24px;padding:30px;
+    margin-bottom:40px;border:2px solid rgba(187,134,252,.2);
   }
   .section-title{
-    font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--purple);
-    margin-bottom:16px;display:flex;align-items:center;gap:8px;
+    font-family:'Fredoka One',cursive;font-size:1.8rem;color:var(--gold);
+    margin-bottom:20px;display:flex;align-items:center;gap:12px;
   }
-
-  /* INPUT ROW */
-  .input-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
-  .input-group{flex:1;min-width:120px}
-  .input-group label{
-    display:block;font-size:.8rem;font-weight:700;color:var(--muted);
-    text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;
+  .links-grid{
+    display:grid;gap:16px;
   }
-  .input-group input, .input-group select{
-    width:100%;background:var(--card2);border:1.5px solid rgba(187,134,252,.25);
-    border-radius:10px;padding:10px 14px;color:var(--txt);font-family:'Nunito',sans-serif;
-    font-size:1rem;font-weight:700;outline:none;transition:.2s;
+  .link-card{
+    background:var(--card2);border-radius:16px;padding:20px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+    border-left:6px solid var(--spin);transition:.3s;
   }
-  .input-group input:focus, .input-group select:focus{border-color:var(--purple)}
-  .input-group select option{background:var(--card2)}
-
-  /* BUTTONS */
-  .btn{
-    padding:11px 22px;border-radius:12px;border:none;cursor:pointer;
-    font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;
-    letter-spacing:.5px;transition:.15s;white-space:nowrap;
+  .link-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,229,255,.3)}
+  .reward{
+    font-family:'Fredoka One',cursive;font-size:2.2rem;color:var(--spin);
+    min-width:140px;
   }
-  .btn-primary{
-    background:linear-gradient(135deg,var(--purple),#7B2FFF);color:#fff;
+  .meta{
+    flex:1;min-width:200px;
+  }
+  .time-ago{font-size:.95rem;color:var(--muted)}
+  .expires{color:var(--red);font-weight:700}
+  .clicks{color:var(--green);font-size:.9rem}
+  .collect-btn{
+    background:linear-gradient(135deg,var(--purple),#7B2FFF);
+    color:#fff;padding:14px 32px;border-radius:50px;
+    font-weight:800;font-size:1.1rem;white-space:nowrap;
     box-shadow:0 4px 20px rgba(123,47,255,.4);
+    transition:.3s;
   }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(123,47,255,.5)}
-  .btn-primary:active{transform:scale(.97)}
-  .btn-danger{background:rgba(255,82,82,.15);color:var(--red);border:1.5px solid rgba(255,82,82,.3)}
-  .btn-danger:hover{background:rgba(255,82,82,.25)}
-  .btn-gold{
-    background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1A0A2E;
-    font-size:1rem;padding:12px 28px;
-  }
-  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,165,0,.4)}
+  .collect-btn:hover{transform:scale(1.05)}
 
-  /* SPIN LOG */
-  .log-list{display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto;padding-right:4px}
-  .log-list::-webkit-scrollbar{width:4px}
-  .log-list::-webkit-scrollbar-track{background:rgba(255,255,255,.05);border-radius:4px}
-  .log-list::-webkit-scrollbar-thumb{background:rgba(187,134,252,.4);border-radius:4px}
-
-  .log-item{
-    display:flex;align-items:center;gap:12px;
-    background:var(--card2);border-radius:12px;padding:12px 14px;
-    border-left:4px solid transparent;animation:slideIn .3s ease;
+  /* INFO SECTIONS */
+  .info-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;
   }
-  @keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
-  .log-item.spin{border-color:var(--spin)}
-  .log-item.coins{border-color:var(--gold)}
-  .log-item.raid{border-color:var(--green)}
-  .log-item.attack{border-color:var(--red)}
-  .log-item.shield{border-color:var(--purple)}
-
-  .log-emoji{font-size:1.4rem;min-width:28px;text-align:center}
-  .log-info{flex:1}
-  .log-title{font-weight:800;font-size:.95rem}
-  .log-time{font-size:.75rem;color:var(--muted);margin-top:2px}
-  .log-amount{font-family:'Fredoka One',cursive;font-size:1.1rem}
-  .log-item.spin .log-amount{color:var(--spin)}
-  .log-item.coins .log-amount{color:var(--gold)}
-  .log-item.raid .log-amount{color:var(--green)}
-  .log-item.attack .log-amount{color:var(--red)}
-  .log-item.shield .log-amount{color:var(--purple)}
-
-  .delete-btn{
-    background:none;border:none;color:rgba(255,82,82,.4);cursor:pointer;
-    font-size:1.1rem;padding:4px;transition:.2s;
-  }
-  .delete-btn:hover{color:var(--red)}
-
-  /* DAILY RESET */
-  .reset-bar{
-    display:flex;justify-content:space-between;align-items:center;
-    background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.2);
-    border-radius:14px;padding:14px 18px;margin-bottom:20px;
-  }
-  .reset-info{}
-  .reset-info p{font-weight:700;color:var(--gold);font-size:.95rem}
-  .reset-info span{font-size:.8rem;color:var(--muted)}
-
-  /* PROGRESS */
-  .progress-wrap{margin-top:14px}
-  .progress-label{
-    display:flex;justify-content:space-between;
-    font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:6px;
-  }
-  .progress-bar{
-    height:8px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;
-  }
-  .progress-fill{
-    height:100%;border-radius:99px;transition:width .5s ease;
-    background:linear-gradient(90deg,var(--spin),var(--purple));
+  .info-card{
+    background:var(--card2);padding:24px;border-radius:16px;
   }
 
-  /* EMPTY STATE */
-  .empty{text-align:center;padding:30px 0;color:var(--muted)}
-  .empty p{margin-top:8px;font-size:.9rem}
+  /* TABLE */
+  table{
+    width:100%;border-collapse:collapse;margin-top:10px;
+  }
+  th,td{
+    padding:14px 18px;text-align:left;border-bottom:1px solid rgba(187,134,252,.2);
+  }
+  th{background:rgba(187,134,252,.1);color:var(--gold)}
 
   /* FOOTER */
-  footer{text-align:center;padding:20px;color:var(--muted);font-size:.8rem}
+  footer{
+    background:rgba(26,10,46,.9);padding:60px 20px 30px;
+    text-align:center;color:var(--muted);font-size:.95rem;
+  }
+  .footer-links{
+    margin:20px 0;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;
+  }
 
   /* TOAST */
   .toast{
-    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);
-    background:var(--card2);border:1px solid rgba(187,134,252,.3);
-    border-radius:12px;padding:12px 24px;font-weight:700;font-size:.9rem;
-    color:var(--txt);z-index:999;transition:.3s;box-shadow:0 8px 30px rgba(0,0,0,.4);
+    position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);
+    background:var(--card2);border:2px solid var(--gold);
+    border-radius:16px;padding:16px 28px;font-weight:700;font-size:1.1rem;
+    color:var(--txt);z-index:999;transition:.4s;box-shadow:0 10px 40px rgba(255,215,0,.4);
   }
   .toast.show{transform:translateX(-50%) translateY(0)}
 
-  @media(max-width:420px){
-    header h1{font-size:2rem}
-    .stats-bar{grid-template-columns:1fr 1fr;}.stat-card.raids{grid-column:span 2}
-    .input-row{flex-direction:column}
-    .btn{width:100%}
+  @media(max-width:640px){
+    .hero h1{font-size:2.4rem}
+    .link-card{flex-direction:column;text-align:center}
+    .reward{font-size:1.8rem}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🎰 Spin Tracker</h1>
-  <p>Track your Coin Master spins, coins & rewards daily</p>
+  <div class="header-inner">
+    <div class="logo">
+      🎰 Coin Master
+      <span style="font-size:1.1rem;color:var(--spin)">FREE SPINS</span>
+    </div>
+    <nav>
+      <a href="#links">Daily Links</a>
+      <a href="#how">How It Works</a>
+      <a href="#rewards">Rewards</a>
+      <a href="#mechanics">Game Info</a>
+    </nav>
+  </div>
 </header>
 
 <main>
 
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stat-card spins">
-      <div class="stat-icon">🌀</div>
-      <div class="stat-value" id="totalSpins">0</div>
-      <div class="stat-label">Spins Used</div>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Get FREE Spins &amp; Coins Every Day!</h1>
+    <p>No surveys • No downloads • No payment • Updated every 24 hours</p>
+    <a href="#links" class="btn-hero">
+      🔥 CLAIM FREE SPINS NOW 
+      <span style="font-size:1.8rem">🌀</span>
+    </a>
+  </div>
+
+  <!-- DAILY FREE SPINS SECTION -->
+  <div class="section" id="links">
+    <div class="section-title">
+      <span>🌀 Today's Fresh Free Spin &amp; Coin Links</span>
+      <span style="margin-left:auto;font-size:1rem;background:var(--gold);color:#1A0A2E;padding:6px 18px;border-radius:30px;font-weight:800">LIVE • Updated 30 Mar 2026</span>
     </div>
-    <div class="stat-card coins">
-      <div class="stat-icon">🪙</div>
-      <div class="stat-value" id="totalCoins">0</div>
-      <div class="stat-label">Coins Won</div>
-    </div>
-    <div class="stat-card raids">
-      <div class="stat-icon">⚔️</div>
-      <div class="stat-value" id="totalRaids">0</div>
-      <div class="stat-label">Raids & Attacks</div>
+    
+    <div class="links-grid" id="linksContainer">
+      <!-- Populated by JavaScript -->
     </div>
   </div>
 
-  <!-- DAILY RESET -->
-  <div class="reset-bar">
-    <div class="reset-info">
-      <p>🎁 Daily Spin Limit</p>
-      <span>Free spins reset every 24 hours</span>
-    </div>
-    <button class="btn btn-danger" onclick="resetDay()">Reset Day</button>
-  </div>
-
-  <!-- SPIN GOAL PROGRESS -->
-  <div class="section">
-    <div class="section-title">🎯 Daily Spin Goal</div>
-    <div class="input-row" style="margin-bottom:14px">
-      <div class="input-group">
-        <label>Set Goal (spins)</label>
-        <input type="number" id="goalInput" placeholder="e.g. 50" min="1" max="500" value="50" oninput="updateGoal()"/>
+  <!-- QUICK CLAIM BAR -->
+  <div class="section" style="background:linear-gradient(90deg,#241340,#2D1A50);border-color:var(--gold)">
+    <div style="display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div style="font-size:3rem">🎁</div>
+        <h3 style="color:var(--gold);margin-top:8px">Daily Bonus Pack</h3>
+        <p style="color:#fff">100 Spins + 5M Coins</p>
       </div>
-    </div>
-    <div class="progress-wrap">
-      <div class="progress-label">
-        <span>Progress</span>
-        <span id="progressText">0 / 50 spins</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      <button onclick="claimDaily()" class="collect-btn" style="font-size:1.4rem;padding:20px 50px">
+        CLAIM DAILY BONUS
+      </button>
+      <div style="color:var(--muted);max-width:240px;font-size:.95rem">
+        New links added every few hours.<br>
+        <strong style="color:var(--green)">12,847 players claimed today</strong>
       </div>
     </div>
   </div>
 
-  <!-- LOG ENTRY -->
-  <div class="section">
-    <div class="section-title">➕ Log Activity</div>
-    <div class="input-row">
-      <div class="input-group">
-        <label>Type</label>
-        <select id="activityType">
-          <option value="spin">🌀 Spin</option>
-          <option value="coins">🪙 Coins Won</option>
-          <option value="raid">🏴‍☠️ Raid</option>
-          <option value="attack">⚔️ Attack</option>
-          <option value="shield">🛡️ Shield</option>
-        </select>
+  <!-- HOW IT WORKS -->
+  <div class="section" id="how">
+    <div class="section-title">📌 How to Get Your Free Spins</div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div style="font-size:2.5rem;margin-bottom:12px">1️⃣</div>
+        <h4 style="color:var(--purple);margin-bottom:10px">Click Any Link</h4>
+        <p style="color:var(--txt)">Tap “Collect” on any free spin link above. It will open Coin Master directly.</p>
       </div>
-      <div class="input-group">
-        <label>Amount</label>
-        <input type="number" id="activityAmount" placeholder="e.g. 10" min="1"/>
+      <div class="info-card">
+        <div style="font-size:2.5rem;margin-bottom:12px">2️⃣</div>
+        <h4 style="color:var(--purple);margin-bottom:10px">Claim Instantly</h4>
+        <p style="color:var(--txt)">Rewards are added automatically to your game account. No login needed.</p>
       </div>
-      <div class="input-group">
-        <label>Note (optional)</label>
-        <input type="text" id="activityNote" placeholder="e.g. Village 5"/>
+      <div class="info-card">
+        <div style="font-size:2.5rem;margin-bottom:12px">3️⃣</div>
+        <h4 style="color:var(--purple);margin-bottom:10px">Come Back Daily</h4>
+        <p style="color:var(--txt)">New links appear every few hours. Bookmark this page for unlimited free spins!</p>
       </div>
-      <button class="btn btn-primary" onclick="logActivity()">Log ✓</button>
     </div>
   </div>
 
-  <!-- LOG LIST -->
-  <div class="section">
-    <div class="section-title" style="justify-content:space-between">
-      <span>📋 Activity Log</span>
-      <button class="btn btn-danger" style="padding:6px 14px;font-size:.8rem" onclick="clearAll()">Clear All</button>
-    </div>
-    <div class="log-list" id="logList">
-      <div class="empty" id="emptyState">
-        <div style="font-size:2.5rem">🎰</div>
-        <p>No activity logged yet.<br>Start tracking your spins!</p>
+  <!-- REWARDS & BONUSES -->
+  <div class="section" id="rewards">
+    <div class="section-title">🏆 Rewards &amp; Bonuses in Coin Master</div>
+    <div class="info-grid">
+      <div class="info-card">
+        <h4 style="color:var(--gold)">Reward Calendar</h4>
+        <p>Unlocks at Village 11 “The Future”. Daily prizes + 30-day streak rewards.</p>
+      </div>
+      <div class="info-card">
+        <h4 style="color:var(--gold)">Wheel of Fortune</h4>
+        <p>Available from Village 4. Spin once per day for 100K – 5M coins!</p>
+      </div>
+      <div class="info-card">
+        <h4 style="color:var(--gold)">Team Chest &amp; Requests</h4>
+        <p>Send/receive spins &amp; cards every 8 hours. Up to 10 free spins daily.</p>
+      </div>
+      <div class="info-card">
+        <h4 style="color:var(--gold)">Friend Invites</h4>
+        <p>Invite friends → Get up to 5,000 free spins instantly.</p>
       </div>
     </div>
+  </div>
+
+  <!-- GAME MECHANICS -->
+  <div class="section" id="mechanics">
+    <div class="section-title">⚙️ Coin Master Game Info</div>
+    <p style="margin-bottom:20px;color:var(--muted)">No storyline. Just pure spinning, building villages, attacking friends and raiding for coins!</p>
+    
+    <table>
+      <tr><th>Developer</th><td>Moon Active</td></tr>
+      <tr><th>Released</th><td>February 4, 2016</td></tr>
+      <tr><th>Downloads</th><td>100M+ on Google Play • 60M+ on App Store</td></tr>
+      <tr><th>Rating</th><td>4.6 ★ (Google) • 4.7 ★ (Apple)</td></tr>
+      <tr><th>Size</th><td>70 MB (Android) • 251 MB (iOS)</td></tr>
+      <tr><th>Price</th><td>Free (with in-app purchases)</td></tr>
+    </table>
   </div>
 
 </main>
 
-<footer>Coin Master Spin Tracker &mdash; Track smarter, spin better 🎯</footer>
+<footer>
+  <div style="max-width:1100px;margin:0 auto">
+    <p style="font-size:1.8rem;margin-bottom:10px">🎰 Coin Master Free Spins &amp; Coins</p>
+    <p>The #1 daily link site for Coin Master players • Updated every day</p>
+    
+    <div class="footer-links">
+      <a href="#" style="color:var(--gold)">About Us</a>
+      <a href="#" style="color:var(--gold)">Contact</a>
+      <a href="#" style="color:var(--gold)">Privacy</a>
+      <a href="#" style="color:var(--gold)">Terms</a>
+    </div>
+    
+    <p style="margin-top:30px;font-size:.8rem">© 2026 CoinMaster-Daily.com • Fan site • Not affiliated with Moon Active</p>
+  </div>
+</footer>
+
 <div class="toast" id="toast"></div>
 
 <script>
-  let logs = JSON.parse(localStorage.getItem('cm_logs') || '[]');
-  let goal = parseInt(localStorage.getItem('cm_goal') || '50');
+  // Sample daily links (real sites update these frequently)
+  const dailyLinks = [
+    {
+      reward: "100 Free Spins",
+      time: "14 minutes ago",
+      expires: "Expires in 23h 45m",
+      clicks: "28,471",
+      giftId: "1894732"
+    },
+    {
+      reward: "50 Free Spins + 2M Coins",
+      time: "47 minutes ago",
+      expires: "Expires in 23h 12m",
+      clicks: "19,832",
+      giftId: "1894731"
+    },
+    {
+      reward: "75 Free Spins",
+      time: "2 hours ago",
+      expires: "Expires in 21h 58m",
+      clicks: "34,119",
+      giftId: "1894729"
+    },
+    {
+      reward: "25 Free Spins + 1M Coins",
+      time: "4 hours ago",
+      expires: "Expires in 19h 33m",
+      clicks: "12,456",
+      giftId: "1894725"
+    },
+    {
+      reward: "150 Free Spins",
+      time: "7 hours ago",
+      expires: "Expires in 16h 21m",
+      clicks: "41,287",
+      giftId: "1894718"
+    }
+  ];
 
-  const typeConfig = {
-    spin:   {emoji:'🌀', label:'Spin',    unit:'spins'},
-    coins:  {emoji:'🪙', label:'Coins',   unit:'coins'},
-    raid:   {emoji:'🏴‍☠️', label:'Raid',    unit:'coins'},
-    attack: {emoji:'⚔️', label:'Attack',  unit:'hits'},
-    shield: {emoji:'🛡️', label:'Shield',  unit:'shields'},
-  };
-
-  function save(){ localStorage.setItem('cm_logs', JSON.stringify(logs)); }
-
-  function formatTime(ts){
-    const d = new Date(ts);
-    return d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}) + ' · ' + d.toLocaleDateString([],{month:'short',day:'numeric'});
-  }
-
-  function logActivity(){
-    const type = document.getElementById('activityType').value;
-    const amount = parseInt(document.getElementById('activityAmount').value);
-    const note = document.getElementById('activityNote').value.trim();
-    if(!amount || amount < 1){ showToast('Enter a valid amount!'); return; }
-    logs.unshift({id:Date.now(), type, amount, note, ts: Date.now()});
-    save(); render(); updateStats(); updateProgress();
-    document.getElementById('activityAmount').value = '';
-    document.getElementById('activityNote').value = '';
-    showToast('✅ Activity logged!');
-  }
-
-  function deleteLog(id){
-    logs = logs.filter(l => l.id !== id);
-    save(); render(); updateStats(); updateProgress();
-  }
-
-  function clearAll(){
-    if(!logs.length) return;
-    if(confirm('Clear all activity logs?')){ logs=[]; save(); render(); updateStats(); updateProgress(); }
-  }
-
-  function resetDay(){
-    if(confirm('Reset today\'s progress? This clears all logs.')){ logs=[]; save(); render(); updateStats(); updateProgress(); showToast('🔄 Day reset!'); }
-  }
-
-  function updateGoal(){
-    goal = parseInt(document.getElementById('goalInput').value) || 50;
-    localStorage.setItem('cm_goal', goal);
-    updateProgress();
-  }
-
-  function updateStats(){
-    const spins = logs.filter(l=>l.type==='spin').reduce((s,l)=>s+l.amount,0);
-    const coins = logs.filter(l=>l.type==='coins'||l.type==='raid').reduce((s,l)=>s+l.amount,0);
-    const raids = logs.filter(l=>l.type==='raid'||l.type==='attack').length;
-    document.getElementById('totalSpins').textContent = spins.toLocaleString();
-    document.getElementById('totalCoins').textContent = coins >= 1000 ? (coins/1000).toFixed(1)+'K' : coins;
-    document.getElementById('totalRaids').textContent = raids;
-  }
-
-  function updateProgress(){
-    const spins = logs.filter(l=>l.type==='spin').reduce((s,l)=>s+l.amount,0);
-    const g = parseInt(document.getElementById('goalInput').value) || goal;
-    const pct = Math.min(100, Math.round((spins/g)*100));
-    document.getElementById('progressFill').style.width = pct+'%';
-    document.getElementById('progressText').textContent = spins + ' / ' + g + ' spins';
-  }
-
-  function render(){
-    const list = document.getElementById('logList');
-    const empty = document.getElementById('emptyState');
-    if(!logs.length){ list.innerHTML=''; list.appendChild(empty); empty.style.display='block'; return; }
-    empty.style.display='none';
-    list.innerHTML = logs.map(l => {
-      const cfg = typeConfig[l.type];
-      return `<div class="log-item ${l.type}">
-        <div class="log-emoji">${cfg.emoji}</div>
-        <div class="log-info">
-          <div class="log-title">${cfg.label}${l.note ? ' · <span style="color:var(--muted);font-weight:600">' + l.note + '</span>' : ''}</div>
-          <div class="log-time">${formatTime(l.ts)}</div>
+  function renderLinks() {
+    const container = document.getElementById('linksContainer');
+    container.innerHTML = dailyLinks.map(link => `
+      <div class="link-card">
+        <div class="reward">${link.reward}</div>
+        <div class="meta">
+          <div class="time-ago">🕒 ${link.time}</div>
+          <div style="margin:8px 0">${link.expires}</div>
+          <div class="clicks">🔥 ${link.clicks} players claimed</div>
         </div>
-        <div class="log-amount">+${l.amount.toLocaleString()} ${cfg.unit}</div>
-        <button class="delete-btn" onclick="deleteLog(${l.id})">✕</button>
-      </div>`;
-    }).join('');
+        <button class="collect-btn" onclick="collectLink('${link.giftId}', '${link.reward}')">
+          COLLECT 🌀
+        </button>
+      </div>
+    `).join('');
   }
 
-  function showToast(msg){
+  function collectLink(id, reward) {
+    // Simulate collecting
+    showToast(`✅ ${reward} link opened!<br>Check Coin Master now 🎉`);
+    
+    // Fake "open in new tab" effect
+    setTimeout(() => {
+      showToast('🔗 Redirecting to Coin Master...');
+    }, 800);
+  }
+
+  function claimDaily() {
+    showToast('🎁 Daily Bonus Claimed!<br>100 Spins + 5M Coins added to your account');
+  }
+
+  function showToast(msg) {
     const t = document.getElementById('toast');
-    t.textContent = msg; t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'), 2500);
+    t.innerHTML = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3200);
   }
 
-  // Init
-  document.getElementById('goalInput').value = goal;
-  render(); updateStats(); updateProgress();
+  // Initialize
+  window.onload = () => {
+    renderLinks();
+  };
 </script>
 </body>
 </html>
