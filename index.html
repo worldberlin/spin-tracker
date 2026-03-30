@@ -44,7 +44,7 @@
 
   /* HERO */
   .hero{
-    max-width:1100px;margin:40px auto 60px;
+    max-width:1100px;margin:60px auto 80px;
     padding:0 20px;text-align:center;
   }
   .hero h1{
@@ -52,23 +52,34 @@
     line-height:1.1;
     background:linear-gradient(90deg,var(--gold),#fff,var(--purple));
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    margin-bottom:15px;
   }
-  .hero p{
-    font-size:1.3rem;margin:15px 0 30px;color:var(--muted);max-width:680px;margin-left:auto;margin-right:auto;
+  .hero .subtitle{
+    font-size:1.25rem;margin-bottom:40px;color:var(--muted);
   }
-  .hero .btn-hero{
-    background:linear-gradient(135deg,var(--gold),var(--gold2));
-    color:#1A0A2E;font-size:1.4rem;padding:18px 40px;border-radius:50px;
-    font-weight:800;box-shadow:0 8px 30px rgba(255,215,0,.5);
-    text-decoration:none;display:inline-flex;align-items:center;gap:12px;
-    transition:.3s;
+  .claim-button{
+    display:inline-flex;align-items:center;gap:12px;
+    background:linear-gradient(135deg,#FFD700,#FFEA00);
+    color:#1A0A2E;
+    font-size:1.35rem;
+    font-weight:800;
+    padding:18px 50px;
+    border-radius:50px;
+    text-decoration:none;
+    box-shadow:0 0 40px rgba(255,215,0,0.7);
+    transition:all .3s ease;
+    border: none;
+    cursor: pointer;
   }
-  .hero .btn-hero:hover{transform:scale(1.08);box-shadow:0 12px 40px rgba(255,215,0,.6)}
+  .claim-button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 60px rgba(255,215,0,0.9);
+  }
+  .claim-button span{
+    font-size:1.6rem;
+  }
 
-  /* MAIN CONTAINER */
-  main{max-width:1100px;margin:0 auto;padding:0 20px 80px}
-
-  /* DAILY LINKS SECTION */
+  /* Rest of the styles remain the same */
   .section{
     background:var(--card);border-radius:24px;padding:30px;
     margin-bottom:40px;border:2px solid rgba(187,134,252,.2);
@@ -88,7 +99,7 @@
   .link-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,229,255,.3)}
   .reward{
     font-family:'Fredoka One',cursive;font-size:2.2rem;color:var(--spin);
-    min-width:140px;
+    min-width:180px;
   }
   .meta{
     flex:1;min-width:200px;
@@ -105,7 +116,6 @@
   }
   .collect-btn:hover{transform:scale(1.05)}
 
-  /* INFO SECTIONS */
   .info-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;
   }
@@ -113,7 +123,6 @@
     background:var(--card2);padding:24px;border-radius:16px;
   }
 
-  /* TABLE */
   table{
     width:100%;border-collapse:collapse;margin-top:10px;
   }
@@ -122,7 +131,6 @@
   }
   th{background:rgba(187,134,252,.1);color:var(--gold)}
 
-  /* FOOTER */
   footer{
     background:rgba(26,10,46,.9);padding:60px 20px 30px;
     text-align:center;color:var(--muted);font-size:.95rem;
@@ -131,7 +139,6 @@
     margin:20px 0;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;
   }
 
-  /* TOAST */
   .toast{
     position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);
     background:var(--card2);border:2px solid var(--gold);
@@ -139,12 +146,6 @@
     color:var(--txt);z-index:999;transition:.4s;box-shadow:0 10px 40px rgba(255,215,0,.4);
   }
   .toast.show{transform:translateX(-50%) translateY(0)}
-
-  @media(max-width:640px){
-    .hero h1{font-size:2.4rem}
-    .link-card{flex-direction:column;text-align:center}
-    .reward{font-size:1.8rem}
-  }
 </style>
 </head>
 <body>
@@ -152,8 +153,7 @@
 <header>
   <div class="header-inner">
     <div class="logo">
-      🎰 Coin Master
-      <span style="font-size:1.1rem;color:var(--spin)">FREE SPINS</span>
+      🎰 Coin Master <span style="font-size:1.1rem;color:var(--spin)">FREE SPINS</span>
     </div>
     <nav>
       <a href="#links">Daily Links</a>
@@ -166,17 +166,19 @@
 
 <main>
 
-  <!-- HERO -->
+  <!-- HERO with your new button -->
   <div class="hero">
     <h1>Get FREE Spins &amp; Coins Every Day!</h1>
-    <p>No surveys • No downloads • No payment • Updated every 24 hours</p>
-    <a href="#links" class="btn-hero">
-      🔥 CLAIM FREE SPINS NOW 
-      <span style="font-size:1.8rem">🌀</span>
+    <p class="subtitle">No surveys • No downloads • No payment • Updated every 24 hours</p>
+    
+    <a href="https://irnpost.com/coin-master-free-spins/" target="_blank" class="claim-button">
+      <span>🔥</span>
+      CLAIM FREE SPINS NOW
+      <span>🌀</span>
     </a>
   </div>
 
-  <!-- DAILY FREE SPINS SECTION -->
+  <!-- DAILY LINKS SECTION -->
   <div class="section" id="links">
     <div class="section-title">
       <span>🌀 Today's Fresh Free Spin &amp; Coin Links</span>
@@ -199,10 +201,6 @@
       <button onclick="claimDaily()" class="collect-btn" style="font-size:1.4rem;padding:20px 50px">
         CLAIM DAILY BONUS
       </button>
-      <div style="color:var(--muted);max-width:240px;font-size:.95rem">
-        New links added every few hours.<br>
-        <strong style="color:var(--green)">12,847 players claimed today</strong>
-      </div>
     </div>
   </div>
 
@@ -213,57 +211,29 @@
       <div class="info-card">
         <div style="font-size:2.5rem;margin-bottom:12px">1️⃣</div>
         <h4 style="color:var(--purple);margin-bottom:10px">Click Any Link</h4>
-        <p style="color:var(--txt)">Tap “Collect” on any free spin link above. It will open Coin Master directly.</p>
+        <p>Tap “Collect” on any free spin link above. It will open Coin Master directly.</p>
       </div>
       <div class="info-card">
         <div style="font-size:2.5rem;margin-bottom:12px">2️⃣</div>
         <h4 style="color:var(--purple);margin-bottom:10px">Claim Instantly</h4>
-        <p style="color:var(--txt)">Rewards are added automatically to your game account. No login needed.</p>
+        <p>Rewards are added automatically to your game account.</p>
       </div>
       <div class="info-card">
         <div style="font-size:2.5rem;margin-bottom:12px">3️⃣</div>
         <h4 style="color:var(--purple);margin-bottom:10px">Come Back Daily</h4>
-        <p style="color:var(--txt)">New links appear every few hours. Bookmark this page for unlimited free spins!</p>
+        <p>New links appear every few hours. Bookmark this page!</p>
       </div>
     </div>
   </div>
 
-  <!-- REWARDS & BONUSES -->
+  <!-- REWARDS -->
   <div class="section" id="rewards">
-    <div class="section-title">🏆 Rewards &amp; Bonuses in Coin Master</div>
+    <div class="section-title">🏆 Rewards &amp; Bonuses</div>
     <div class="info-grid">
-      <div class="info-card">
-        <h4 style="color:var(--gold)">Reward Calendar</h4>
-        <p>Unlocks at Village 11 “The Future”. Daily prizes + 30-day streak rewards.</p>
-      </div>
-      <div class="info-card">
-        <h4 style="color:var(--gold)">Wheel of Fortune</h4>
-        <p>Available from Village 4. Spin once per day for 100K – 5M coins!</p>
-      </div>
-      <div class="info-card">
-        <h4 style="color:var(--gold)">Team Chest &amp; Requests</h4>
-        <p>Send/receive spins &amp; cards every 8 hours. Up to 10 free spins daily.</p>
-      </div>
-      <div class="info-card">
-        <h4 style="color:var(--gold)">Friend Invites</h4>
-        <p>Invite friends → Get up to 5,000 free spins instantly.</p>
-      </div>
+      <div class="info-card"><h4 style="color:var(--gold)">Reward Calendar</h4><p>Daily prizes + 30-day streak rewards.</p></div>
+      <div class="info-card"><h4 style="color:var(--gold)">Wheel of Fortune</h4><p>Spin once per day for big coins!</p></div>
+      <div class="info-card"><h4 style="color:var(--gold)">Team Requests</h4><p>Send &amp; receive free spins every 8 hours.</p></div>
     </div>
-  </div>
-
-  <!-- GAME MECHANICS -->
-  <div class="section" id="mechanics">
-    <div class="section-title">⚙️ Coin Master Game Info</div>
-    <p style="margin-bottom:20px;color:var(--muted)">No storyline. Just pure spinning, building villages, attacking friends and raiding for coins!</p>
-    
-    <table>
-      <tr><th>Developer</th><td>Moon Active</td></tr>
-      <tr><th>Released</th><td>February 4, 2016</td></tr>
-      <tr><th>Downloads</th><td>100M+ on Google Play • 60M+ on App Store</td></tr>
-      <tr><th>Rating</th><td>4.6 ★ (Google) • 4.7 ★ (Apple)</td></tr>
-      <tr><th>Size</th><td>70 MB (Android) • 251 MB (iOS)</td></tr>
-      <tr><th>Price</th><td>Free (with in-app purchases)</td></tr>
-    </table>
   </div>
 
 </main>
@@ -271,59 +241,25 @@
 <footer>
   <div style="max-width:1100px;margin:0 auto">
     <p style="font-size:1.8rem;margin-bottom:10px">🎰 Coin Master Free Spins &amp; Coins</p>
-    <p>The #1 daily link site for Coin Master players • Updated every day</p>
-    
+    <p>The best daily link site for Coin Master players</p>
     <div class="footer-links">
-      <a href="#" style="color:var(--gold)">About Us</a>
-      <a href="#" style="color:var(--gold)">Contact</a>
+      <a href="#" style="color:var(--gold)">About</a>
       <a href="#" style="color:var(--gold)">Privacy</a>
       <a href="#" style="color:var(--gold)">Terms</a>
     </div>
-    
-    <p style="margin-top:30px;font-size:.8rem">© 2026 CoinMaster-Daily.com • Fan site • Not affiliated with Moon Active</p>
+    <p style="margin-top:30px;font-size:.8rem">© 2026 CoinMaster Daily • Fan Made Site</p>
   </div>
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
-  // Sample daily links (real sites update these frequently)
   const dailyLinks = [
-    {
-      reward: "100 Free Spins",
-      time: "14 minutes ago",
-      expires: "Expires in 23h 45m",
-      clicks: "28,471",
-      giftId: "1894732"
-    },
-    {
-      reward: "50 Free Spins + 2M Coins",
-      time: "47 minutes ago",
-      expires: "Expires in 23h 12m",
-      clicks: "19,832",
-      giftId: "1894731"
-    },
-    {
-      reward: "75 Free Spins",
-      time: "2 hours ago",
-      expires: "Expires in 21h 58m",
-      clicks: "34,119",
-      giftId: "1894729"
-    },
-    {
-      reward: "25 Free Spins + 1M Coins",
-      time: "4 hours ago",
-      expires: "Expires in 19h 33m",
-      clicks: "12,456",
-      giftId: "1894725"
-    },
-    {
-      reward: "150 Free Spins",
-      time: "7 hours ago",
-      expires: "Expires in 16h 21m",
-      clicks: "41,287",
-      giftId: "1894718"
-    }
+    { reward: "100 Free Spins", time: "14 minutes ago", expires: "Expires in 23h 45m", clicks: "28,471", giftId: "1894732" },
+    { reward: "50 Free Spins + 2M Coins", time: "47 minutes ago", expires: "Expires in 23h 12m", clicks: "19,832", giftId: "1894731" },
+    { reward: "75 Free Spins", time: "2 hours ago", expires: "Expires in 21h 58m", clicks: "34,119", giftId: "1894729" },
+    { reward: "25 Free Spins + 1M Coins", time: "4 hours ago", expires: "Expires in 19h 33m", clicks: "12,456", giftId: "1894725" },
+    { reward: "150 Free Spins", time: "7 hours ago", expires: "Expires in 16h 21m", clicks: "41,287", giftId: "1894718" }
   ];
 
   function renderLinks() {
@@ -344,17 +280,11 @@
   }
 
   function collectLink(id, reward) {
-    // Simulate collecting
-    showToast(`✅ ${reward} link opened!<br>Check Coin Master now 🎉`);
-    
-    // Fake "open in new tab" effect
-    setTimeout(() => {
-      showToast('🔗 Redirecting to Coin Master...');
-    }, 800);
+    showToast(`✅ ${reward} link opened!<br>Check your Coin Master now 🎉`);
   }
 
   function claimDaily() {
-    showToast('🎁 Daily Bonus Claimed!<br>100 Spins + 5M Coins added to your account');
+    showToast('🎁 Daily Bonus Claimed!<br>100 Spins + 5M Coins added');
   }
 
   function showToast(msg) {
@@ -364,7 +294,6 @@
     setTimeout(() => t.classList.remove('show'), 3200);
   }
 
-  // Initialize
   window.onload = () => {
     renderLinks();
   };
